@@ -1,24 +1,9 @@
 {
   "expo": {
-    "name": "chanakya",
+    "name": "Chanakya",
     "slug": "chanakya",
     "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/android-icon-foreground.png",
-        "backgroundImage": "./assets/android-icon-background.png",
-        "monochromeImage": "./assets/android-icon-monochrome.png"
-      }
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    }
+    "android": { "package": "com.chanakya.godnative" },
+    "plugins": [["expo-secure-store"], ["expo-notifications"]]
   }
 }
