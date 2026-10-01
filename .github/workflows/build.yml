@@ -12,18 +12,17 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
-      - name: Install
+      - name: Install deps
         run: npm install
       - name: Prebuild
         run: npx expo prebuild --clean --platform android --no-install
-      - name: Build
+      - name: Build Release APK
         run: |
           cd android
           chmod +x gradlew
          ./gradlew assembleRelease
-      - name: Upload
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: chanakya-apk
           path: android/app/build/outputs/apk/release/app-release.apk
-YAML
