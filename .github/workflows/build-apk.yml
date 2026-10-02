@@ -1,0 +1,49 @@
+name: Build Mahadev v26 Paper Lab
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+
+      - name: Install deps + Fix Babel
+        run: |
+          npm uninstall @babel/core || true
+          npm install --save-dev @babel/core@7.25.2 --legacy-peer-deps
+          npm install buffer --legacy-peer-deps
+          npm install --legacy-peer-deps
+          npx expo install --fix -- --legacy-peer-deps
+
+      - name: Prebuild
+        run: |
+          rm -rf android
+          npx expo prebuild --platform android --clean --no-install
+        env:
+          EXPO_NO_TELEMETRY: 1
+
+      - name: Build APK Release
+        run: |
+          cd android
+          chmod +x gradlew
+         ./gradlew assembleRelease --stacktrace -Dorg.gradle.jvmargs="-Xmx4g" --no-daemon
+        env:
+          NODE_OPTIONS: "--max-old-space-size=4096"
+          EXPO_NO_TELEMETRY: 1
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: mahadev-v26-paper-MIN-0.1-SOL
+          path: android/app/build/outputs/apk/release/app-release.apk

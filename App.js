@@ -1,7 +1,7 @@
+import {Buffer} from 'buffer'; global.Buffer=Buffer;
+import 'react-native-get-random-values';
 import React,{useState,useEffect,useRef} from 'react';
 import {View,Text,StyleSheet,ScrollView,TouchableOpacity} from 'react-native';
-import 'react-native-get-random-values';
-import {Buffer} from 'buffer'; global.Buffer=Buffer;
 import * as FileSystem from 'expo-file-system/legacy';
 import * as Sharing from 'expo-sharing';
 import * as TaskManager from 'expo-task-manager';
