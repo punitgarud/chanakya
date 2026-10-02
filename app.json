@@ -3,11 +3,11 @@
     "name": "Mahadev",
     "slug": "mahadev",
     "version": "19.0.0",
-    "orientation": "portrait",
-    "splash": { "backgroundColor": "#080808", "resizeMode": "contain" },
+    "icon": "./assets/icon.png",
+    "splash": { "backgroundColor": "#080808", "resizeMode": "contain", "image": "./assets/icon.png" },
     "android": {
       "package": "com.mahadev.app",
-      "adaptiveIcon": { "backgroundColor": "#080808" }
+      "adaptiveIcon": { "foregroundImage": "./assets/icon.png", "backgroundColor": "#080808" }
     }
   }
 }

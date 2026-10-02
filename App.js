@@ -8,7 +8,7 @@ import {Buffer} from 'buffer'; global.Buffer=Buffer;
 const MODULES = [
   { id:'mickey', name:'MickeyScout v2', color:'#FFCC00', desc:'1% max fee filter - scout-free.ts', type:'scout' },
   { id:'airdrop', name:'Airdrop Helper v2', color:'#00FF94', desc:'Jito/Kamino/Jupiter + OCP tracker', type:'airdrop' },
-  { id:'god', name:'GOD v15', color:'#FFD700', desc:'Robust 5.2% seeker', type:'trade' },
+  { id:'god', name:'GOD v15', color:'#00D4FF', desc:'Robust 5.2% seeker', type:'trade' },
   { id:'volume', name:'Volume Hunter v3', color:'#00FF88', desc:'Volume spike >120%', type:'trade' },
   { id:'seeker', name:'Seeker Sniper v2', color:'#00D4FF', desc:'New token sniper', type:'trade' },
   { id:'usdt', name:'USDT Scalper', color:'#FF6B6B', desc:'USDT/SOL scalping', type:'trade' },
@@ -108,7 +108,7 @@ const openAirdrop=(url)=> Linking.openURL(url);
 
 return(
 <View style={s.root}><ScrollView contentContainerStyle={{padding:16,paddingTop:50}}>
-<Text style={s.title}>MAHADEV GOD NATIVE</Text><Text style={s.sub}>MICKEYSCOUT v2 • 1% FILTER • NATIVE WALLET</Text>
+<Text style={s.title}>🔱 MAHADEV TRISHUL</Text><Text style={s.sub}>MICKEYSCOUT v2 • 1% FILTER • NATIVE WALLET</Text>
 <View style={s.card}>
 <TouchableOpacity style={s.cb} onPress={connectNative}><Text style={s.cbt}>{wallet? wallet.slice(0,4)+'...'+wallet.slice(-4)+' ✅ '+solBal.toFixed(4)+' SOL':'Connect NATIVE Seeker (0.311 SOL)'}</Text></TouchableOpacity>
 {wallet && <Text style={[s.bv,{fontSize:9, color:'#aaa'}]} selectable>{wallet}</Text>}
@@ -139,6 +139,6 @@ return(
 );
 }
 const s=StyleSheet.create({
-root:{flex:1,backgroundColor:'#080808'}, title:{color:'#FFD700',fontSize:22,fontWeight:'900',textAlign:'center'}, sub:{color:'#FFCC00',textAlign:'center',fontSize:10,marginBottom:10,fontWeight:'bold'},
+root:{flex:1,backgroundColor:'#080808'}, title:{color:'#00D4FF',fontSize:22,fontWeight:'900',textAlign:'center'}, sub:{color:'#FFCC00',textAlign:'center',fontSize:10,marginBottom:10,fontWeight:'bold'},
 card:{backgroundColor:'#121212',borderRadius:14,padding:12,borderWidth:1,borderColor:'#222',marginBottom:10}, row:{flexDirection:'row',justifyContent:'space-between',alignItems:'center'}, row2:{flexDirection:'row',justifyContent:'space-between',alignItems:'center',marginTop:10,backgroundColor:'#1a1a1a',padding:10,borderRadius:10}, ct:{color:'#fff',fontWeight:'bold'}, cs:{color:'#aaa',fontSize:11,marginTop:4}, cb:{backgroundColor:'#fff',padding:12,borderRadius:20,alignItems:'center'}, cbt:{color:'#000',fontWeight:'bold',fontSize:12}, bv:{color:'#fff',textAlign:'center',marginTop:8,fontWeight:'bold',fontSize:12}, sw:{backgroundColor:'#333',paddingHorizontal:12,paddingVertical:6,borderRadius:12}, swt:{color:'#fff',fontWeight:'bold'}, logBox:{backgroundColor:'#0a0a0a',borderRadius:12,padding:12,borderWidth:1,borderColor:'#1a1a1a', minHeight:140}, lt:{color:'#555',fontSize:10,marginBottom:3}, ab:{backgroundColor:'#222',paddingHorizontal:10,paddingVertical:6,borderRadius:10,marginRight:6,marginBottom:6,borderWidth:1,borderColor:'#333'}, abt:{color:'#fff',fontSize:10,fontWeight:'bold'}
 });
