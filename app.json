@@ -1,9 +1,13 @@
 {
   "expo": {
-    "name": "Chanakya",
-    "slug": "chanakya",
-    "version": "1.0.0",
-    "android": { "package": "com.chanakya.godnative" },
-    "plugins": [["expo-secure-store"], ["expo-notifications"]]
+    "name": "Mahadev",
+    "slug": "mahadev",
+    "version": "19.0.0",
+    "orientation": "portrait",
+    "splash": { "backgroundColor": "#080808", "resizeMode": "contain" },
+    "android": {
+      "package": "com.mahadev.app",
+      "adaptiveIcon": { "backgroundColor": "#080808" }
+    }
   }
 }

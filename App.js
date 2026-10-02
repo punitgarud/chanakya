@@ -91,7 +91,7 @@ const connectNative=async()=>{
   const {transact}=await import('@solana-mobile/mobile-wallet-adapter-protocol-web3js');
   const {Connection,PublicKey}=await import('@solana/web3.js');
   await transact(async(w)=>{
-    const auth=await w.authorize({cluster:'mainnet-beta', identity:{name:'Chanakya MickeyScout NATIVE'}});
+    const auth=await w.authorize({cluster:'mainnet-beta', identity:{name:"Mahadev NATIVE"}});
     const addr=auth.accounts[0].address;
     await SecureStore.setItemAsync('AUTH_TOKEN',auth.auth_token);
     await SecureStore.setItemAsync('WALLET_ADDR',addr);
@@ -108,7 +108,7 @@ const openAirdrop=(url)=> Linking.openURL(url);
 
 return(
 <View style={s.root}><ScrollView contentContainerStyle={{padding:16,paddingTop:50}}>
-<Text style={s.title}>CHANAKYA GOD NATIVE</Text><Text style={s.sub}>MICKEYSCOUT v2 • 1% FILTER • NATIVE WALLET</Text>
+<Text style={s.title}>MAHADEV GOD NATIVE</Text><Text style={s.sub}>MICKEYSCOUT v2 • 1% FILTER • NATIVE WALLET</Text>
 <View style={s.card}>
 <TouchableOpacity style={s.cb} onPress={connectNative}><Text style={s.cbt}>{wallet? wallet.slice(0,4)+'...'+wallet.slice(-4)+' ✅ '+solBal.toFixed(4)+' SOL':'Connect NATIVE Seeker (0.311 SOL)'}</Text></TouchableOpacity>
 {wallet && <Text style={[s.bv,{fontSize:9, color:'#aaa'}]} selectable>{wallet}</Text>}
