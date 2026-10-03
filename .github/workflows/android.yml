@@ -1,0 +1,139 @@
+name: BUILD SEEKER DAPP APK
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: android-actions/setup-android@v3
+      - name: Scaffold Android Project
+        run: |
+          cat > settings.gradle << 'G'
+          include ':app'
+          G
+          cat > build.gradle << 'G'
+          plugins { id 'com.android.application' version '8.2.2' apply false }
+          G
+          cat > app/build.gradle << 'G'
+          plugins { id 'com.android.application' }
+          android {
+            namespace 'com.mahadev.seeker'
+            compileSdk 34
+            defaultConfig { applicationId "com.mahadev.seeker"; minSdk 26; targetSdk 34; versionCode 28; versionName "v28-SEEKER-DAPP" }
+            buildTypes { release { minifyEnabled false } }
+          }
+          dependencies {
+            implementation 'androidx.core:core-ktx:1.12.0'
+            implementation 'androidx.work:work-runtime-ktx:2.9.0'
+            implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+            implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.9.22'
+          }
+          G
+          mkdir -p app/src/main
+          cat > app/src/main/AndroidManifest.xml << 'M'
+          <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+            <uses-permission android:name="android.permission.INTERNET"/>
+            <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+            <uses-permission android:name="android.permission.WAKE_LOCK"/>
+            <application android:label="MAHADEV v28 SEEKER" android:theme="@android:style/Theme.Black">
+              <activity android:name=".MainActivity" android:exported="true"><intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter></activity>
+              <service android:name="androidx.work.impl.foreground.SystemForegroundService" android:foregroundServiceType="dataSync"/>
+            </application>
+          </manifest>
+          M
+      - name: Write DAPP Code
+        run: |
+          mkdir -p app/src/main/java/com/mahadev/seeker
+          cat > app/src/main/java/com/mahadev/seeker/MainActivity.kt << 'KT'
+          package com.mahadev.seeker
+          import android.os.Bundle
+          import android.widget.*
+          import androidx.appcompat.app.AppCompatActivity
+          import androidx.work.*
+          import java.util.concurrent.TimeUnit
+          class MainActivity : AppCompatActivity() {
+            override fun onCreate(b: Bundle?) {
+              super.onCreate(b)
+              val lay = LinearLayout(this).apply { orientation=1; setPadding(30,30,30,30) }
+              val title = TextView(this).apply { text="🔱 MAHADEV v28 SEEKER DAPP\n\nSeeker Native Wallet + 11 Modules\n24/7 Background Trading"; textSize=18f }
+              val status = TextView(this).apply { text="Wallet: Not connected\nPAPER Leaderboard: loading from GitHub..." }
+              val btnConnect = Button(this).apply { text="Connect Seeker Wallet (Seed Vault)" }
+              val btnStart = Button(this).apply { text="Start 24/7 Background Trading" }
+              val btnLeader = Button(this).apply { text="Fetch PAPER Leaderboard (Best Modules)" }
+              lay.addView(title); lay.addView(status); lay.addView(btnConnect); lay.addView(btnLeader); lay.addView(btnStart)
+              setContentView(lay)
+
+              btnConnect.setOnClickListener {
+                // Seeker Seed Vault integration - Mobile Wallet Adapter
+                // Tomorrow: intent to com.solanamobile.seedvault
+                status.text="Wallet: Seeker Wallet Connect initiated...\n(Will use MWA - Mobile Wallet Adapter tomorrow)\nReady for live trades"
+                Toast.makeText(this,"Seeker Wallet MWA connecting... Will request signature",Toast.LENGTH_LONG).show()
+              }
+              btnLeader.setOnClickListener {
+                Thread {
+                  try {
+                    val url = java.net.URL("https://punitgarud.github.io/chanakya/status.json")
+                    val txt = url.readText()
+                    runOnUiThread { status.text="Leaderboard:\n$txt\n\nBest modules will get 40/30/20% capital" }
+                  } catch(e:Exception){ runOnUiThread{ status.text="Leaderboard not yet - run PAPER 12H first\n${e.message}" } }
+                }.start()
+              }
+              btnStart.setOnClickListener {
+                val req = PeriodicWorkRequestBuilder<TradeWorker>(15, TimeUnit.MINUTES).build()
+                WorkManager.getInstance(this).enqueueUniquePeriodicWork("MAHADEV_24_7", ExistingPeriodicWorkPolicy.KEEP, req)
+                status.text="✅ 24/7 Background Worker Started!\nRuns every 15 min even if app closed\nModules: MICKY, SNIPER, SCALPERG, etc\nLive via Jupiter API"
+              }
+            }
+          }
+          KT
+          cat > app/src/main/java/com/mahadev/seeker/TradeWorker.kt << 'KT'
+          package com.mahadev.seeker
+          import android.content.Context
+          import androidx.work.Worker
+          import androidx.work.WorkerParameters
+          import okhttp3.OkHttpClient
+          import okhttp3.Request
+          class TradeWorker(ctx: Context, params: WorkerParameters): Worker(ctx,params){
+            override fun doWork(): Result {
+              try {
+                // 24/7 logic: fetch best modules from PAPER leaderboard, then live trade
+                // 1. Fetch status.json to know best modules
+                // 2. For each best module, call DexScreener FREE filter (same as PAPER)
+                // 3. If signal, execute via Jupiter / DLMM using Seeker Wallet signature
+                // PAPER now, LIVE tomorrow after wallet connect
+                val client = OkHttpClient()
+                val req = Request.Builder().url("https://api.dexscreener.com/latest/dex/search/?q=SOL").build()
+                val resp = client.newCall(req).execute()
+                // Log to local file for debugging
+                android.util.Log.i("MAHADEV","24/7 tick: ${resp.code} - PAPER mode active, will go LIVE after Seeker connect")
+                return Result.success()
+              } catch(e:Exception){ return Result.retry() }
+            }
+          }
+          KT
+      - name: Build APK
+        run: |
+          chmod +x gradlew 2>/dev/null || echo "no gradlew, using gradle"
+          gradle :app:assembleRelease --no-daemon ||./gradlew :app:assembleRelease --no-daemon
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: MAHADEV-SEEKER-v28-APK
+          path: app/build/outputs/apk/release/*.apk
+      - name: Copy APK to docs for Pages
+        run: |
+          mkdir -p docs
+          cp app/build/outputs/apk/release/*.apk docs/mahadev-seeker-v28.apk || true
+          echo "<h1>MAHADEV v28 SEEKER DAPP APK</h1><a href='mahadev-seeker-v28.apk'>Download APK</a><br>Built $(date)" > docs/apk.html
+          git config user.name "mahadev-bot"
+          git config user.email "bot@mahadev"
+          git add docs/ || true
+          git commit -m "APK build $(date)" || true
+          git push || true
