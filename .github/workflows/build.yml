@@ -1,4 +1,4 @@
-name: Build
+name: Build MAHADEV
 on: [push]
 jobs:
   build:
@@ -6,16 +6,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: cd chanakya && npm install --legacy-peer-deps
+      - run: cd chanakya && npx expo export --platform web
+      - uses: peaceiris/actions-gh-pages@v4
         with:
-          node-version: 20
-      - uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: 17
-      - run: npm install
-      - run: npx expo prebuild --clean --platform android --no-install
-      - run: cd android && chmod +x gradlew &&./gradlew assembleRelease
-      - uses: actions/upload-artifact@v4
-        with:
-          name: chanakya-apk
-          path: android/app/build/outputs/apk/release/app-release.apk
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir:./chanakya/dist
