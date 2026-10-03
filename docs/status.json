@@ -1,31 +1,48 @@
 {
-  "time": "03 Oct 2026, 02:19:26 pm IST",
-  "balance": 0.311,
-  "pnl": "+0.70%",
+  "time": "03/10/26, 2:48:38 pm IST",
+  "balance": 4,
+  "balanceStr": "4.000 SOL",
+  "pnl": "+2.922 SOL (73.05%)",
+  "totalPnlSol": "2.922",
   "modules": [
     {
-      "name": "Data Feed Binance",
-      "status": "LIVE 14:19:26 IST",
+      "id": "SCALPER",
+      "name": "Scalper v27",
+      "pnl": "0.009",
+      "trades": 3,
+      "status": "LIVE 02:48:38 pm IST",
       "ok": true
     },
     {
-      "name": "Signal Engine v27",
-      "status": "Signal Check OK",
+      "id": "MOMENTUM",
+      "name": "Momentum v27",
+      "pnl": "1.186",
+      "trades": 5,
+      "status": "LIVE 02:48:38 pm IST",
       "ok": true
     },
     {
-      "name": "Risk Manager",
-      "status": "Balance 0.311 SOL Safe",
+      "id": "MEANREV",
+      "name": "MeanRev v27",
+      "pnl": "0.698",
+      "trades": 4,
+      "status": "LIVE 02:48:38 pm IST",
       "ok": true
     },
     {
-      "name": "Paper Executor",
-      "status": "Paper Trade Simulated",
+      "id": "BREAKOUT",
+      "name": "Breakout v27",
+      "pnl": "0.583",
+      "trades": 3,
+      "status": "LIVE 02:48:38 pm IST",
       "ok": true
     },
     {
-      "name": "Logger",
-      "status": "Log Updated",
+      "id": "GRID",
+      "name": "Grid v27",
+      "pnl": "0.446",
+      "trades": 2,
+      "status": "LIVE 02:48:38 pm IST",
       "ok": true
     }
   ]
