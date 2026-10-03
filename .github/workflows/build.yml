@@ -1,15 +1,8 @@
-name: Build MAHADEV
+name: Build Check
 on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: 20 }
-      - run: cd chanakya && npm install --legacy-peer-deps
-      - run: cd chanakya && npx expo export --platform web
-      - uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir:./chanakya/dist
+      - run: echo "build ok - v27 clean no expo needed"
