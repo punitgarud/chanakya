@@ -1,0 +1,7 @@
+{"time":"Booting v27...","balance":"0.311","pnl":"+0.00%","modules":[
+{"name":"Data Feed Binance","status":"LIVE","ok":true},
+{"name":"Signal Engine v27","status":"ARMED","ok":true},
+{"name":"Risk Manager","status":"12Hrs Paper Mode","ok":true},
+{"name":"Paper Executor","status":"Running 2min cron","ok":true},
+{"name":"Logger","status":"OK","ok":true}
+]}

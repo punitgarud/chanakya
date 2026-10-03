@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html><head><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MAHADEV v27 DASHBOARD</title>
+<style>
+body{background:#0a0a0a;color:#00ff88;font-family:monospace;padding:12px}
+.card{border:1px solid #00ff88;padding:12px;margin:10px 0;border-radius:12px;background:#111}
+.ok{color:#00ff88} .warn{color:#ffaa00} .bad{color:#ff4444}
+h1{font-size:22px} h2{font-size:16px;margin:0 0 8px}
+.big{font-size:28px;font-weight:bold}
+</style></head><body>
+<h1>🔱 MAHADEV v27</h1>
+<div class="card"><h2>⏱ Last Update</h2><div id="time">loading...</div></div>
+<div class="card"><h2>💰 Paper Wallet</h2><div class="big" id="bal">0.311 SOL</div><div id="pnl">P&L: +0.00%</div></div>
+<div class="card"><h2>📡 Modules</h2>
+<div id="mods"></div>
+</div>
+<div class="card"><h2>📜 Trades</h2><pre id="log">loading paper_log...</pre></div>
+<script>
+async function load(){
+  try{
+    let r = await fetch('./status.json?t='+Date.now());
+    let j = await r.json();
+    document.getElementById('time').innerText = j.time;
+    document.getElementById('bal').innerText = j.balance+' SOL';
+    document.getElementById('pnl').innerText = 'P&L: '+j.pnl;
+    let h='';
+    for(let m of j.modules){ h+=`<div>${m.ok?'✅':'❌'} ${m.name}: <span class="${m.ok?'ok':'bad'}">${m.status}</span></div>`; }
+    document.getElementById('mods').innerHTML=h;
+  }catch(e){ document.getElementById('mods').innerText='Waiting for first paper run...'; }
+  try{
+    let r2 = await fetch('./paper_log.txt?t='+Date.now());
+    let t = await r2.text();
+    document.getElementById('log').innerText = t.slice(-2000);
+  }catch(e){}
+}
+load(); setInterval(load, 10000);
+</script>
+</body></html>
