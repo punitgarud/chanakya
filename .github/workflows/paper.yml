@@ -5,32 +5,23 @@ on:
   schedule:
     - cron: '*/2 * * * *'
   workflow_dispatch:
-
 jobs:
   paper:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with: { node-version: 20 }
-      - name: Find and run paper
-        run: |
-          ls -R | head -100
-          echo "--- finding paper file ---"
-          FILE=$(find. -name "paper_v27_clean.js" | head -1)
-          echo "Found: $FILE"
-          if [ -z "$FILE" ]; then
-            echo "No paper file yet, creating dummy log"
-            echo "$(date) PAPER RUN - file missing" > paper_log.txt
-          else
-            DIR=$(dirname $FILE)
-            cd $DIR
-            npm install --legacy-peer-deps --no-audit 2>&1 | tail -5
-            node $FILE || node -e "console.log('MAHADEV v27 PAPER LIVE - 0.311 SOL -', new Date())"
-          fi
-          echo "$(date) - MAHADEV v27 Paper cycle OK - Balance 0.311" >> $GITHUB_WORKSPACE/paper_log.txt
-          cat $GITHUB_WORKSPACE/paper_log.txt
-      - uses: actions/upload-artifact@v4
-        with:
-          name: paper-log
-          path: paper_log.txt
+        with: { node-version: 22 }
+      - run: |
+          FILE=$(find . -name "paper_v27_clean.js" | head -1)
+          DIR=$(dirname $FILE)
+          cd $DIR
+          node paper_v27_clean.js
+          cd $GITHUB_WORKSPACE
+          git config user.name "mahadev-bot"
+          git config user.email "bot@mahadev.com"
+          git add docs/status.json docs/paper_log.txt || true
+          git commit -m "paper: update dashboard $(date -u)" || true
+          git push origin main || true
