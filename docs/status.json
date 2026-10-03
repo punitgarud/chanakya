@@ -1,11 +1,11 @@
 {
-  "time": "2026-10-03T08:40:33.194Z",
+  "time": "03 Oct 2026, 02:19:26 pm IST",
   "balance": 0.311,
-  "pnl": "+0.81%",
+  "pnl": "+0.70%",
   "modules": [
     {
       "name": "Data Feed Binance",
-      "status": "LIVE 08:40:33",
+      "status": "LIVE 14:19:26 IST",
       "ok": true
     },
     {
