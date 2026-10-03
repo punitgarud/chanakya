@@ -1,7 +1,32 @@
-{"time":"Booting v27...","balance":"0.311","pnl":"+0.00%","modules":[
-{"name":"Data Feed Binance","status":"LIVE","ok":true},
-{"name":"Signal Engine v27","status":"ARMED","ok":true},
-{"name":"Risk Manager","status":"12Hrs Paper Mode","ok":true},
-{"name":"Paper Executor","status":"Running 2min cron","ok":true},
-{"name":"Logger","status":"OK","ok":true}
-]}
+{
+  "time": "2026-10-03T08:40:33.194Z",
+  "balance": 0.311,
+  "pnl": "+0.81%",
+  "modules": [
+    {
+      "name": "Data Feed Binance",
+      "status": "LIVE 08:40:33",
+      "ok": true
+    },
+    {
+      "name": "Signal Engine v27",
+      "status": "Signal Check OK",
+      "ok": true
+    },
+    {
+      "name": "Risk Manager",
+      "status": "Balance 0.311 SOL Safe",
+      "ok": true
+    },
+    {
+      "name": "Paper Executor",
+      "status": "Paper Trade Simulated",
+      "ok": true
+    },
+    {
+      "name": "Logger",
+      "status": "Log Updated",
+      "ok": true
+    }
+  ]
+}
