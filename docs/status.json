@@ -1,121 +1,121 @@
 {
-  "time": "12/10/26, 6:55:26 am IST",
+  "time": "12/10/26, 1:16:02 pm IST",
   "balance": 4,
   "balanceStr": "4.000 SOL",
-  "pnl": "+7.651 SOL (191.28%)",
-  "totalPnlSol": "7.651",
-  "totalPnlPct": "191.28",
+  "pnl": "+7.921 SOL (198.03%)",
+  "totalPnlSol": "7.921",
+  "totalPnlPct": "198.03",
   "modules": [
     {
       "id": "SCALPER",
       "name": "Scalper v27",
-      "pnl": "-0.039",
-      "trades": 3,
-      "status": "PAPER 06:55:26 am IST",
+      "pnl": "-0.101",
+      "trades": 5,
+      "status": "PAPER 01:16:02 pm IST",
       "ok": true,
       "desc": "PAPER 24H - DLMM"
     },
     {
       "id": "MOMENTUM",
       "name": "Momentum v27",
-      "pnl": "1.045",
-      "trades": 1,
-      "status": "PAPER 06:55:26 am IST",
+      "pnl": "0.734",
+      "trades": 2,
+      "status": "PAPER 01:16:02 pm IST",
       "ok": true,
       "desc": "PAPER 24H"
     },
     {
       "id": "MEANREV",
       "name": "MeanRev v27",
-      "pnl": "0.705",
-      "trades": 4,
-      "status": "PAPER 06:55:26 am IST",
+      "pnl": "0.773",
+      "trades": 5,
+      "status": "PAPER 01:16:02 pm IST",
       "ok": true,
       "desc": "PAPER 24H"
     },
     {
       "id": "BREAKOUT",
       "name": "Breakout v27",
-      "pnl": "-0.077",
-      "trades": 2,
-      "status": "PAPER 06:55:26 am IST",
+      "pnl": "0.077",
+      "trades": 1,
+      "status": "PAPER 01:16:02 pm IST",
       "ok": true,
       "desc": "PAPER 24H"
     },
     {
       "id": "GRID",
       "name": "Grid v27",
-      "pnl": "0.575",
-      "trades": 5,
-      "status": "PAPER 06:55:26 am IST",
+      "pnl": "0.174",
+      "trades": 1,
+      "status": "PAPER 01:16:02 pm IST",
       "ok": true,
       "desc": "PAPER 24H"
     },
     {
       "id": "AIRDROP",
       "name": "Airdrop Hunter v28 (GMGN)",
-      "pnl": "0.693",
+      "pnl": "1.009",
       "trades": 5,
-      "status": "PAPER 06:55:26 am IST | 11 prot",
+      "status": "PAPER 01:16:02 pm IST | 8 prot",
       "ok": true,
-      "desc": "PAPER Div:87 0.05SOL/tx JUP/Kamino"
+      "desc": "PAPER Div:81 0.05SOL/tx JUP/Kamino"
     },
     {
       "id": "MICKY",
       "name": "MickeyScout v28 (defituna) [PAPER]",
-      "pnl": "1.996",
-      "trades": 5,
-      "status": "PAPER 06:55:26 am IST | GMGN 0.75",
+      "pnl": "1.650",
+      "trades": 3,
+      "status": "PAPER 01:16:02 pm IST | GMGN 0.65",
       "ok": true,
-      "desc": "PAPER Score 81 mcap $74346 0.04SOL TP/SL"
+      "desc": "PAPER Score 85 mcap $250294 0.04SOL TP/SL"
     },
     {
       "id": "SNIPER",
       "name": "Sniper God v28 (pattern-fleet)",
-      "pnl": "0.686",
-      "trades": 5,
-      "status": "PAPER 06:55:26 am IST | 0.3 SOL",
+      "pnl": "0.982",
+      "trades": 4,
+      "status": "PAPER 01:16:02 pm IST | 0.3 SOL",
       "ok": true,
       "desc": "PAPER Small-cap 50k-500k DLMM inflow>=0.60"
     },
     {
       "id": "SCALPERG",
       "name": "Scalper God v28 (pattern-fleet)",
-      "pnl": "0.785",
-      "trades": 4,
-      "status": "PAPER 06:55:26 am IST | 0.2 SOL",
+      "pnl": "0.276",
+      "trades": 1,
+      "status": "PAPER 01:16:02 pm IST | 0.2 SOL",
       "ok": true,
       "desc": "PAPER Tight-range 200k-2M fee farming DLMM"
     },
     {
       "id": "DEGEN",
       "name": "Degen God v28 (pattern-fleet)",
-      "pnl": "0.930",
-      "trades": 4,
-      "status": "PAPER 06:55:26 am IST | 0.5+0.1 SOL",
+      "pnl": "1.588",
+      "trades": 5,
+      "status": "PAPER 01:16:02 pm IST | 0.5+0.1 SOL",
       "ok": true,
       "desc": "PAPER Fresh <100k <24h DLMM+DAMM-v2 48h -90% stop"
     },
     {
       "id": "VULTURE",
       "name": "Vulture God v28 (pattern-fleet)",
-      "pnl": "0.352",
-      "trades": 4,
-      "status": "PAPER 06:55:26 am IST | 0.25 SOL",
+      "pnl": "0.759",
+      "trades": 1,
+      "status": "PAPER 01:16:02 pm IST | 0.25 SOL",
       "ok": true,
       "desc": "PAPER Dumped >70% mean-rev DLMM inflow returning"
     }
   ],
   "version": "v28-PAPER-24H-11MOD-defituna-patternfleet",
   "mode": "PAPER_ONLY",
-  "paperUntil": "13/10/2026, 6:55:27 am",
+  "paperUntil": "13/10/2026, 1:16:03 pm",
   "mickey": {
-    "inflow": "0.75",
-    "score": 81,
-    "mcap": 74346
+    "inflow": "0.65",
+    "score": 85,
+    "mcap": 250294
   },
   "airdrop": {
-    "protocols": 11,
-    "diversity": 87
+    "protocols": 8,
+    "diversity": 81
   }
 }
